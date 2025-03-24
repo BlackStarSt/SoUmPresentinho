@@ -3,6 +3,7 @@ import "./Header.css";
 import "../../root.css";
 import logo from "../../assets/icons/logo.png";
 import userIcon from "../../assets/icons/user.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -12,10 +13,14 @@ const Header = () => {
             </div>
             <nav>
                 <ul>
-                    <button className="btnLogin">
-                        Login
-                        <img src={userIcon} alt="Usuário" className="user-icon" />
-                    </button>
+                    <li>
+                        <Link to={"/login"}>
+                            <button className="btnLogin">
+                                Login
+                                <img src={userIcon} alt="Usuário" className="user-icon" />
+                            </button>
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>
