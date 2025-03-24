@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import App from '.'
 
 function App() {
   return (
