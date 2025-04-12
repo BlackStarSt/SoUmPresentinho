@@ -1,44 +1,43 @@
 import React from "react";
 import { useState } from "react";
 import "../Login/Login.css";
-import logo from "../../assets/icons/presente.png"
-import check from "../../assets/icons/badge-check.png"
-import { Link } from "react-router-dom";
+import compOu from '../../assets/icons/ou.png'
 
 const Login = () => {
     const [value, setValue] = useState('')
 
     return (
-        <div className="container">
-            <img src={logo} alt="Logo da empresa" className="logo_img" />
-            <div className="ctn_login">
-                <div className="input_ctn">
-                    <input
-                        type="text"
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                        required>
-                    </input>
-                    <label>E-mail</label>
+        <div className="login">
+            <div className="container">
+                <p className="title">Login</p>
+                <div className="ctn_login">
+                    <div className="input_ctn">
+                        <label>E-mail</label>
+                        <input
+                            type="text"
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
+                            required>
+                        </input>
+                    </div>
+                    <div className="input_ctn">
+                        <label>Senha</label>
+                        <input
+                            type="text"
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
+                            required>
+                        </input>
+                    </div>
                 </div>
-                <div className="input_ctn">
-                    <input
-                        type="text"
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                        required>
-                    </input>
-                    <label>Senha</label>
+                <div className="ctn_btns">
+                    <button className="btnCheck">Entrar</button>
+                    <a href="/" className="btnSenha">Esqueceu a senha?</a>
+                    <img src={compOu} alt="#" className="divider" />
+                    <button className="btnConta">Criar uma conta</button>
                 </div>
             </div>
-            <Link to={"/"} className="no_under">
-                <button className="btnCheck">
-                    Entrar
-                    <img src={check} alt="Check badge" className="check_icon" />
-                </button>
-            </Link>
-            <p>Ou cadastre-se <Link to={"/"} className="link">aqui!</Link></p>
-        </div> 
+        </div>
     )
 }
 

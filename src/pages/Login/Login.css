@@ -1,88 +1,103 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .container {
-    height: 700px;
-    width: 400px;
-    padding: 25px;
-    background-color: var(--roxo-claro);
+    height: 562px;
+    width: 800px;
+    background-color: var(--lilas);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     font-family: var(--roboto);
+    padding: 20px 0;
+    margin: 90px;
 }
 
-.logo_img {
-    height: 120px;
-    width: 120px;
+.title {
+    font-size: 36px;
+    color: var(--roxo);
+    font-weight: bold;
 }
 
 .ctn_login {
-    height: 260px;
+    height: 130.5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .input_ctn {
-    position: relative;
-}
-
-input {
-    height: 40px;
-    width: 310px;
-    border: none;
-    border-bottom: 3px var(--verde) solid;
-    border-radius: 5px 5px 0 0;
-    padding: 10px 0 0 10px;
+    height: 52px;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 5px 10px;
-    width: 40px;
-    background-color: var(--branco);
-    font-size: 12px;
+    padding-left: 10px;
+    font-size: 15px;
+    color: var(--roxo);
 }
 
-input:focus {
+input {
+    height: 33px;
+    width: 330px;
     border: none;
-    border-bottom: 3px var(--amarelo) solid;
-    outline: none;
+    border-radius: 10px;
+    padding: 0 10px;
 }
 
-.no_under {
-    text-decoration: none !important;
-}
+.ctn_btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "entrar senha"
+      "divider divider"
+      "conta conta";
+    gap: 32px;
+    justify-items: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+  }
 
-
-.btnCheck {
-    width: 120px;
-    height: 53px;
+.btnCheck, .btnConta {
+    width: 151px;
+    height: 36.4px;
     border: none;
-    border-radius: 15px;
-    background-color: var(--verde-agua);
+    border-radius: 40px;
+    background-color: var(--roxo);
     color: var(--branco);
     font-weight: bold;
-    font-family: var(--roboto);
     font-size: 16px;
-    padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.btnCheck:hover {
-    background-color: var(--verde);
+.btnCheck {
+    grid-area: entrar;
 }
 
-p {
-    font-size: 20px;
-}
-
-.link {
-    color: var(--amarelo);
+.btnSenha {
+    color: var(--roxo);
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
     font-weight: bold;
+    grid-area: senha;
+}
+
+.divider {
+    grid-area: divider;
+}
+
+.btnConta {
+    grid-area: conta;
+    width: 214px;
 }

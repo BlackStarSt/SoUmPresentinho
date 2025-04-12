@@ -44,5 +44,5 @@ header {
   
   .btnLogin:hover {
     outline: none;
-    background-color: var(--roxo-claro);
+    background-color: var(--marrom)
   }

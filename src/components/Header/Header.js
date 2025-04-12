@@ -5,11 +5,14 @@ import logo from "../../assets/icons/logo.png";
 import userIcon from "../../assets/icons/user.png";
 import { Link } from "react-router-dom";
 
+
 const Header = () => {
     return (
         <header>
             <div>
-                <img src={logo} alt="Logo" />
+                <Link to={"/"}>
+                    <img src={logo} alt="Logo" />
+                </Link> 
             </div>
             <nav>
                 <ul>
