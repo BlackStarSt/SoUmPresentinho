@@ -1,0 +1,166 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section {
+    margin: 160px 0;
+}
+
+.title {
+    font-size: 64px;
+    font-weight: bold;
+    color: var(--preto);
+}
+
+section:nth-of-type(2) .title,
+section:nth-of-type(3) .title {
+    color: var(--roxo);
+}
+
+p {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.hero_section {
+    height: 407.11px;
+    width: 1500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ctn_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 899px;
+}   
+
+.ctn_btn {
+    padding: 0 50px;
+}
+
+.btn_hero {
+    background-color: var(--roxo);
+    color: var(--branco);
+    font-size: 32px;
+    font-weight: bold;
+    border-radius: 40px;
+    border: none;
+    width: 457px;
+    height: 89px;
+}
+
+.func_section {
+    height: 826px;
+    width: 841px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.func_section > p {
+    text-align: center;
+}
+
+.ctn_box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 92px 115px;
+    justify-items: center;
+}
+
+.box {
+    background-color: var(--roxo);
+    color: var(--branco);
+    font-weight: bold;
+    font-size: 20px;
+    height: 207px;
+    width: 235px;
+    border-radius: 47px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.num {
+    font-size: 36px;
+    padding-left: 10px;
+}
+
+.num_txt {
+    font-size: 24px;
+    text-align: center;
+}
+
+.plano_section {
+    height: 550px;
+    width: 1146px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.plano_section > .title {
+    text-align: center;
+}
+
+.ctn_boxPlano {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+.box_plano {
+    height: 400px;
+    width: 300px;
+    background: var(--lilas);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.25);
+}
+
+.plano_title {
+    color: var(--branco);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    font-size: 20px;
+    list-style: none;
+    padding-bottom: 2.5px;
+}
+
+img {
+    padding: 0 5px;
+}
+
+.plano_value {
+    font-size: 32px;
+    color: var(--roxo);
+    font-weight: bold;
+}
+
+footer {
+    display: block;
+    background-color: var(--lilas);
+    height: 157px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
