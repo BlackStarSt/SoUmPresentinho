@@ -100,4 +100,5 @@ input {
 .btnConta {
     grid-area: conta;
     width: 214px;
+    text-decoration: none;
 }

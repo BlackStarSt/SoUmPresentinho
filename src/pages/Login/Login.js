@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../Login/Login.css";
 import compOu from '../../assets/icons/ou.png'
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [value, setValue] = useState('')
@@ -14,7 +15,7 @@ const Login = () => {
                     <div className="input_ctn">
                         <label>E-mail</label>
                         <input
-                            type="text"
+                            type="email"
                             value={value}
                             onChange={(e) => setValue(e.target.value)}
                             required>
@@ -23,7 +24,7 @@ const Login = () => {
                     <div className="input_ctn">
                         <label>Senha</label>
                         <input
-                            type="text"
+                            type="password"
                             value={value}
                             onChange={(e) => setValue(e.target.value)}
                             required>
@@ -34,7 +35,9 @@ const Login = () => {
                     <button className="btnCheck">Entrar</button>
                     <a href="/" className="btnSenha">Esqueceu a senha?</a>
                     <img src={compOu} alt="#" className="divider" />
-                    <button className="btnConta">Criar uma conta</button>
+                    <Link to={'/cadastro'} className="btnConta">
+                        <button className="btnConta">Criar uma conta</button>
+                    </Link>
                 </div>
             </div>
         </div>
