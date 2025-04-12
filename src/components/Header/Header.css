@@ -1,5 +1,5 @@
 header {
-    background: var(--verde-agua);
+    background: var(--lilas);
     padding: 15px 100px;
     color: var(--branco);
     text-align: center;
@@ -10,6 +10,7 @@ header {
     background-image: url('../../assets/icons/confete.png');
     background-repeat: repeat-x;
     background-size: 15%;
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.25);
   }
   
   nav ul {
