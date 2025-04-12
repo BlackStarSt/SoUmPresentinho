@@ -3,4 +3,9 @@
 body {
     margin: 0;
     font-family: 'Roboto Condensed', sans-serif;
+    background-color: var(--bege);
+}
+
+h1, p {
+    margin: 0;
 }
