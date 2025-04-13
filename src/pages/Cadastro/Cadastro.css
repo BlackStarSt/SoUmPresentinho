@@ -48,7 +48,6 @@ input {
     width: 181px;
 }
 
-.btnCheck {
+.btnCheck > button{
     width: 230px;
-    text-decoration: none;
 }
