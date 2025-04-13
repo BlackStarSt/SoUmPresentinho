@@ -1,0 +1,30 @@
+.progressBar {
+    width: 537.5px;
+}
+
+.bar {
+    width: 537.5px;
+    height: 3px;
+    background-color: var(--lilas);
+    display: flex;
+    position: relative;
+    top: 17px;
+}
+
+.ctn_points {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-evenly;
+}
+
+.bar_point {
+    height: 30px;
+    width: 30px;
+    background-color: var(--lilas-palido);
+    border-radius: 30px;
+}
+
+.active {
+    background-color: var(--lilas-claro);
+}
