@@ -15,7 +15,7 @@
     justify-content: space-evenly;
     font-family: var(--roboto);
     padding: 20px 0;
-    margin: 90px;
+    margin: 72.5px;
 }
 
 .title {
@@ -78,9 +78,11 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    text-decoration: none;
 }
 
 .btnCheck {
+    width: 151px;
     grid-area: entrar;
 }
 
