@@ -1,21 +1,23 @@
 import React from "react";
 import '../ProgressBar/ProgressBar.css';
 
-const ProgressBar = () => {
+const ProgressBar = ({etapaAtual}) => {
+
+    const etapas = 9;
 
     return (
         <div className="progressBar">
             <div className="bar"></div>
             <div className="ctn_points">
-                <div className="bar_point active"></div>
-                <div className="bar_point"></div>
-                <div className="bar_point"></div>
-                <div className="bar_point"></div>
-                <div className="bar_point"></div>
-                <div className="bar_point"></div>
-                <div className="bar_point"></div>
-                <div className="bar_point"></div>
-                <div className="bar_point"></div>
+                {Array.from({ length: etapas }).map((_, index) => {
+                    let className = "bar_point";
+                    if (index < etapaAtual) {
+                        className += " complete";
+                    } else if (index === etapaAtual) {
+                        className += " active";
+                    }
+                    return <div key={index} className={className}></div>;
+                })}
             </div>
         </div>
     )

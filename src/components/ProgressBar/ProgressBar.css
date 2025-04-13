@@ -23,8 +23,13 @@
     width: 30px;
     background-color: var(--lilas-palido);
     border-radius: 30px;
+    transition: background-color 0.3s ease;
 }
 
 .active {
     background-color: var(--lilas-claro);
+}
+
+.complete {
+    background-color: var(--roxo);
 }
