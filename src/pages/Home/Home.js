@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import '../Home/Home.css';
 import check from '../../assets/icons/check.png'
 import notCheck from '../../assets/icons/X.png'
@@ -17,7 +19,9 @@ const Home = () => {
                             Personalize com fotos, mensagens, músicas e contadores interativos para tornar o presente ainda mais emocionante.
                         </p>
                         <div className="ctn_btn">
-                            <button className="btn_hero">Criar agora</button>
+                            <Link to={'/create'} className="btn_hero">
+                                <button className="btn_hero">Criar agora</button>
+                            </Link>
                         </div>
                     </div>
                     <img src={heroImg} alt="Pessoas comemorando em cima de uma caixa de presente" className="hero_img"/>

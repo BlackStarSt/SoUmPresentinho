@@ -52,6 +52,11 @@ p {
     border: none;
     width: 457px;
     height: 89px;
+    cursor: pointer;
+}
+
+.btn_hero:hover {
+    background-color: var(--marrom);
 }
 
 .func_section {
