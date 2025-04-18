@@ -19,6 +19,10 @@
     width: 500px;
     border-radius: 15px;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .ctn_url {
@@ -44,4 +48,28 @@
     width: 200px;
     height: 300px;
     background-color: var(--roxo);
+}
+
+.ctn_textos {
+    height: 200px;
+    width: 410px;
+}
+
+hr {
+    height: 1px;
+    background-color: var(--roxo);
+    margin: 10px 0;
+}
+
+.textos_title {
+    font-size: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.textos_message {
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
 }

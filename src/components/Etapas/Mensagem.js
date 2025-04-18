@@ -3,7 +3,7 @@ import '../../pages/Create/Create.css';
 
 const Mensagem = ({ formData, setFormData }) => {
     const handleChange = (e) => {
-        setFormData({ ...formData, mensagem: e.target.value });
+        setFormData({ ...formData, message: e.target.value });
     };
     
     return (
@@ -14,7 +14,7 @@ const Mensagem = ({ formData, setFormData }) => {
                 <div className="ctn_inputCreate">
                     <label htmlFor=""></label>
                     <input type="text"
-                        value={formData.mensagem}
+                        value={formData.message || ''}
                         onChange={handleChange}
                     />
                 </div>
