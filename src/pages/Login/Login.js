@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "../Login/Login.css";
@@ -32,13 +31,19 @@ const Login = () => {
             const querySnapshot = await getDocs(q);
 
             if (querySnapshot.empty) {
-                alert('Email incorretas!');
+                alert('Usuário não encontrado ou senha incorreta!');
             } else {
-                alert('Login bem-sucedido!');
-                navigate('/create');
+                querySnapshot.forEach((doc) => {
+                    const userData = doc.data();
+                    localStorage.setItem('userEmail', userData.email);
+                    localStorage.setItem('userName', userData.name);
+                });
+
+                navigate('/profile');
             }
         } catch (error) {
             console.error("Erro ao tentar logar:", error);
+            alert('Houve um erro ao tentar realizar o login.');
         }
     };
 
