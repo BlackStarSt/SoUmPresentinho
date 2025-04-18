@@ -95,6 +95,10 @@ input {
     grid-area: senha;
 }
 
+.btnSenha:hover {
+    color: var(--marrom);
+}
+
 .divider {
     grid-area: divider;
 }
@@ -103,4 +107,8 @@ input {
     grid-area: conta;
     width: 214px;
     text-decoration: none;
+}
+
+.btnConta:hover{
+    background-color: var(--marrom);
 }

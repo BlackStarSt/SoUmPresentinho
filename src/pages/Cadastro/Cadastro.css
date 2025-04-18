@@ -51,3 +51,14 @@ input {
 .btnCheck > button{
     width: 230px;
 }
+
+.btnCheck:hover {
+    background-color: var(--marrom);
+}
+
+.div_btnCadastro {
+    display: flex;
+    flex-direction: row;
+    width: 377px;
+    justify-content: space-around;
+}

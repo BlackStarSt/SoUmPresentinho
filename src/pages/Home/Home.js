@@ -35,8 +35,8 @@ const Home = () => {
                             <p className="num_txt">Complete o formulário com carinho para começar a criar sua memória.</p>
                         </div>
                         <div className="box">
-                            <p2 className="num">2.</p2>
-                            <p2 className="num_txt">Finalize com segurança usando Cartão de Crédito ou PIX.</p2>
+                            <p className="num">2.</p>
+                            <p className="num_txt">Finalize com segurança usando Cartão de Crédito ou PIX.</p>
                         </div>
                         <div className="box">
                             <p className="num">3.</p>
