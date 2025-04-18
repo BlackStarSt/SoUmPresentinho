@@ -9,6 +9,8 @@ import Nome from "../../components/Etapas/Nome";
 import Titulo from "../../components/Etapas/Titulo";
 import Mensagem from "../../components/Etapas/Mensagem";
 import Fotos from "../../components/Etapas/Fotos";
+import Musica from "../../components/Etapas/Musica";
+import Plano from "../../components/Etapas/Plano";
 
 const Create = () => {
     const [etapaAtual, setEtapaAtual] = useState(0);
@@ -17,14 +19,18 @@ const Create = () => {
         nome: "",
         titulo: "",
         mensagem: "",
-        fotos: ""
+        fotos: [],
+        musica: "",
+        formData: ""
     });
 
     const etapas = [
         <Nome formData={formData} setFormData={setFormData} />,
         <Titulo formData={formData} setFormData={setFormData} />,
         <Mensagem formData={formData} setFormData={setFormData} />,
-        <Fotos formData={formData} setFormData={setFormData} />
+        <Fotos formData={formData} setFormData={setFormData} />,
+        <Musica formData={formData} setFormData={setFormData} />,
+        <Plano formData={formData} setFormData={setFormData} />
     ];
 
     const avancar = () => {
@@ -40,8 +46,8 @@ const Create = () => {
     };
 
     return (
-        <div className="ctn_create">
-            <div className="create">
+        <div className={`ctn_create ${etapaAtual === etapas.length - 1 ? 'ctn_plano' : ''}`}>
+            <div className={`create ${etapaAtual === etapas.length - 1 ? 'plano' : ''}`}>
                 <ProgressBar etapaAtual={etapaAtual} />
 
                 {etapas[etapaAtual]}
@@ -49,9 +55,12 @@ const Create = () => {
                 <ButtonsEtapas
                     onAvancar={avancar}
                     onVoltar={voltar}
+                    isPlano={etapaAtual === 5}
                 />
             </div>
-            <Visualizer data={formData} />
+            {etapaAtual !== etapas.length - 1 && (
+                <Visualizer data={formData} />
+            )}
         </div>
     );
 };
