@@ -39,15 +39,19 @@
 
 .ctn_spotify {
     width: 480px;
-    height: 75px;
+    height: 80px;
     border-radius: 15px;
-    background-color: var(--roxo);
 }
 
 .ctn_fotos {
     width: 200px;
     height: 300px;
-    background-color: var(--roxo);
+}
+
+.foto {
+    width: 200px;
+    height: 300px;
+    padding: 0;
 }
 
 .ctn_textos {
