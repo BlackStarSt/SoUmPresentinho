@@ -4,9 +4,9 @@ import '../Buttons/Buttons.css';
 import back from '../../assets/icons/arrow_back.png';
 import forward from'../../assets/icons/arrow_forward.png';
 
-const ButtonsEtapas = ({onVoltar, onAvancar}) => {
+const ButtonsEtapas = ({onVoltar, onAvancar, isPlano }) => {
     return (
-        <div className="ctn_btnEtapa">
+        <div className={`ctn_btnEtapa ${isPlano ? 'cnt_btnPlano' : ''}`}>
             <button className="btnEtapa" onClick={onVoltar}>
                 <img src={back} alt="Voltar" className="btnEtapa_icon" />
                 Voltar
