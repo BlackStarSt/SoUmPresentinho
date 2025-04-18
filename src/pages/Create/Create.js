@@ -21,7 +21,7 @@ const Create = () => {
         mensagem: "",
         fotos: [],
         musica: "",
-        formData: ""
+        plano: ""
     });
 
     const etapas = [
