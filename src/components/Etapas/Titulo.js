@@ -13,7 +13,7 @@ const Titulo = ({ formData, setFormData }) => {
                 <div className="ctn_inputCreate">
                     <label htmlFor=""></label>
                     <input type="text" 
-                        value={formData.titulo}
+                        value={formData.titulo || ''}
                         onChange={handleChange}
                     />
                 </div>

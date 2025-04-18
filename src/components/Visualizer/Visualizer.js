@@ -10,7 +10,11 @@ const Visualizer = ({ data }) => {
                 <div className="ctn_url">soumalembraancinha.com/{ data.nome }</div>
                 <div className="ctn_spotify"></div>
                 <div className="ctn_fotos"></div>
-                <div className="ctn_textos"></div>
+                <div className="ctn_textos">
+                    <h3 className="textos_title">{ data.titulo }</h3>
+                    <hr></hr>
+                    <p className="textos_message">{ data.message }</p>
+                </div>
             </div>
         </div>
     )
