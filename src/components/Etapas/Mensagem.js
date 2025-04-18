@@ -13,7 +13,7 @@ const Mensagem = ({ formData, setFormData }) => {
                 <p className="content_create">Escreva aqui sua mensagem especial para ficar eternizada na sua memória.</p>
                 <div className="ctn_inputCreate">
                     <label htmlFor=""></label>
-                    <input type="text"
+                    <textarea type="text" className="mensagem"
                         value={formData.message || ''}
                         onChange={handleChange}
                     />
