@@ -1,5 +1,6 @@
 import React from "react";
-import '../../pages/Create/Create.css';
+
+import "../../pages/Create/Create.css";
 
 const Fotos = ({ formData, setFormData }) => {
     const handleChange = (e) => {
@@ -10,13 +11,26 @@ const Fotos = ({ formData, setFormData }) => {
             return;
         }
 
-        setFormData({ ...formData, fotos: files });
+        const newFotos = files.map((file) => {
+            const reader = new FileReader();
+
+            return new Promise((resolve) => {
+                reader.onloadend = () => {
+                    resolve(reader.result);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        Promise.all(newFotos).then((fotosBase64) => {
+            setFormData({ ...formData, fotos: fotosBase64 });
+        });
     };
 
     const handleRemove = (indexToRemove) => {
         const updatedFotos = formData.fotos.filter((_, index) => index !== indexToRemove);
         setFormData({ ...formData, fotos: updatedFotos });
-      };
+    };
 
     return (
         <div className="ctn_create">
@@ -24,7 +38,13 @@ const Fotos = ({ formData, setFormData }) => {
                 <h2 className="title_create">Inserção de fotos</h2>
                 <p className="content_create">Selecione fotos para decorar a página. Máximo de 3 imagens.</p>
                 <div className="ctn_inputCreate photo_input">
-                    <input type="file" accept="image/*" id="createNome" multiple onChange={handleChange} />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        id="createNome"
+                        multiple
+                        onChange={handleChange}
+                    />
                     <div className="photo_text">
                         <strong>Clique para adicionar fotos</strong><br />
                         <span>PNG, JPG, JPEG, GIF (max. 3 fotos)</span>
@@ -34,7 +54,7 @@ const Fotos = ({ formData, setFormData }) => {
                     {formData.fotos.map((foto, index) => (
                         <div key={index} className="preview-box">
                             <img
-                                src={URL.createObjectURL(foto)}
+                                src={foto} // Aqui você já pode usar a string base64
                                 alt={`preview-${index}`}
                                 className="preview-img"
                             />
@@ -50,7 +70,7 @@ const Fotos = ({ formData, setFormData }) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Fotos;
