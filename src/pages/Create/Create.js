@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { db } from "../../db/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import Visualizer from "../../components/Visualizer/Visualizer";
@@ -17,7 +18,6 @@ import Musica from "../../components/Etapas/Musica";
 import Plano from "../../components/Etapas/Plano";
 
 const Create = () => {
-
     const [etapaAtual, setEtapaAtual] = useState(0);
     const [formData, setFormData] = useState({
         url: "",
@@ -27,8 +27,18 @@ const Create = () => {
         musica: "",
         plano: ""
     });
+    
+    const emailUsuario = localStorage.getItem("emailUsuario");
+    const navigate = useNavigate();
 
     const salvarDados = async () => {
+        if (!emailUsuario) {
+            alert("Você precisa estar logado para salvar a página.");
+            navigate('/login');
+            return;
+        }
+
+        const dataCriacao = Timestamp.now();
         const dados = {
             url: formData.url,
             titulo: formData.titulo,
@@ -36,11 +46,12 @@ const Create = () => {
             fotos: formData.fotos,
             musica: formData.musica,
             plano: formData.plano,
+            usuarioEmail: emailUsuario,
+            criado_em: dataCriacao,
         };
 
         try {
-            const docRef = await addDoc(collection(db, "paginas"), dados);
-            console.log("Documento gravado com ID: ", docRef.id);
+            await addDoc(collection(db, "paginas"), dados);
         } catch (error) {
             console.error("Erro ao salvar dados: ", error);
         }
