@@ -46,7 +46,7 @@ const Visualizer = ({ data }) => {
                 <div className="ctn_fotos">
                     {data.fotos && data.fotos.length > 0 && (
                         <img
-                            src={URL.createObjectURL(data.fotos[currentIndex])}
+                            src={data.fotos[currentIndex]}
                             alt={`foto-${currentIndex}`}
                             className="foto"
                         />

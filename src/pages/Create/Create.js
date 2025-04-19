@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import { db } from "../../db/firebase";
+import { collection, addDoc } from "firebase/firestore";
+
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import Visualizer from "../../components/Visualizer/Visualizer";
 import ButtonsEtapas from "../../components/Buttons/Buttons";
@@ -14,9 +17,10 @@ import Musica from "../../components/Etapas/Musica";
 import Plano from "../../components/Etapas/Plano";
 
 const Create = () => {
+
     const [etapaAtual, setEtapaAtual] = useState(0);
     const [formData, setFormData] = useState({
-        nome: "",
+        url: "",
         titulo: "",
         mensagem: "",
         fotos: [],
@@ -24,9 +28,29 @@ const Create = () => {
         plano: ""
     });
 
+    const salvarDados = async () => {
+        const dados = {
+            url: formData.url,
+            titulo: formData.titulo,
+            mensagem: formData.mensagem,
+            fotos: formData.fotos,
+            musica: formData.musica,
+            plano: formData.plano,
+        };
+
+        try {
+            const docRef = await addDoc(collection(db, "paginas"), dados);
+            console.log("Documento gravado com ID: ", docRef.id);
+        } catch (error) {
+            console.error("Erro ao salvar dados: ", error);
+        }
+    };
+
     const avancar = () => {
         if (etapaAtual < etapas.length - 1) {
             setEtapaAtual(etapaAtual + 1);
+        } else {
+            salvarDados();
         }
     };
 

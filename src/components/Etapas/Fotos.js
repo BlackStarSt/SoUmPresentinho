@@ -54,7 +54,7 @@ const Fotos = ({ formData, setFormData }) => {
                     {formData.fotos.map((foto, index) => (
                         <div key={index} className="preview-box">
                             <img
-                                src={foto} // Aqui você já pode usar a string base64
+                                src={foto}
                                 alt={`preview-${index}`}
                                 className="preview-img"
                             />
