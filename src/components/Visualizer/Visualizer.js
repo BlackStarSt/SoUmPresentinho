@@ -29,7 +29,7 @@ const Visualizer = ({ data }) => {
         <div className="visualizer">
             <h2 className="title_visu">Pré-visualização</h2>
             <div className="ctn_visu">
-                <div className="ctn_url">soumalembraancinha.com/{data.nome}</div>
+                <div className="ctn_url">soumalembraancinha.com/{data.url}</div>
                 <div className="ctn_spotify">
                     {data.musica && (
                         <iframe className="ctn_spotify"
@@ -46,7 +46,7 @@ const Visualizer = ({ data }) => {
                 <div className="ctn_fotos">
                     {data.fotos && data.fotos.length > 0 && (
                         <img
-                            src={URL.createObjectURL(data.fotos[currentIndex])}
+                            src={data.fotos[currentIndex]}
                             alt={`foto-${currentIndex}`}
                             className="foto"
                         />

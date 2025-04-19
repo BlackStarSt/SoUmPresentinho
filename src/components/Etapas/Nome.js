@@ -4,7 +4,7 @@ import '../../pages/Create/Create.css';
 const Nome = ({ formData, setFormData }) => {
     const handleChange = (e) => {
         const valorFormatado = e.target.value.replace(/\s+/g, '-');
-        setFormData({ ...formData, nome: valorFormatado });
+        setFormData({ ...formData, url: valorFormatado });
     };
 
     return (
@@ -16,7 +16,7 @@ const Nome = ({ formData, setFormData }) => {
                     <label htmlFor="">*Esse campo não pode ser alterado logo que é o identificador da memória.</label>
                     <input
                         type="text"
-                        value={formData.nome || ''}
+                        value={formData.url || ''}
                         onChange={handleChange}
                     />
                 </div>
