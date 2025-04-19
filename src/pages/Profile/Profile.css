@@ -1,0 +1,94 @@
+.container_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile_img {
+    height: 120px;
+    width: 120px;
+    border: 3px dashed var(--branco);
+    padding: 15px;
+}
+
+.profile_title {
+    text-align: center;
+    font-size: 32px;
+    border-bottom: 3px solid var(--branco);
+    margin: 15px 0;
+    padding: 10px 0;
+}
+
+.profile_texts {
+    height: 80px;
+    border-bottom: 3px solid var(--branco);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.profile_texts > p {
+    font-size: 20px;
+}
+
+.profile_pages {
+    width: 500px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box_page {
+    height: 80px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 3px dashed var(--roxo);
+    background-color: var(--lilas-claro);
+    color: var(--branco);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.box_page:hover {
+    border: 3px dashed var(--branco);
+    background-color: var(--marrom);
+}
+
+.box_page > p {
+    font-size: 16px;
+}
+
+.profile_btns {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.p_btn {
+    height: 37.5px;
+    width: 120px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--roxo);
+    color: var(--branco);
+    border-radius: 10px;
+}
+
+.p_btn:hover {
+    background-color: var(--marrom);
+}

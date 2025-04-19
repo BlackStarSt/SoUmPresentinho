@@ -1,0 +1,197 @@
+.ctn_create {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.create {
+    width: 650px;
+    height: 260px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.create_photo {
+    height: 320px;
+    margin-bottom: 5px;
+}
+
+.title_create {
+    color: var(--roxo);
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.content_create {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.ctn_inputCreate {
+    display: flex;
+    flex-direction: column;
+}
+
+.mensagem {
+    border: 1px solid var(--roxo);
+    height: 160px;
+    resize: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.ctn_inputCreate > label {
+    color: var(--rosa);
+}
+
+.ctn_inputCreate > input {
+    width: 600px;
+    height: 40px;
+    border-radius: 15px;
+    border: 1px solid var(--roxo);
+    font-weight: bold;
+    background-color: var(--branco);
+}
+
+.photo_input {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 150px;
+    border: 2px dashed var(--roxo);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--branco); /* ou qualquer cor desejada */
+    color: var(--preto);
+    text-align: center;
+}
+
+.photo_input input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.photo_text {
+    z-index: 1;
+    pointer-events: none;
+}
+
+.photo_text strong {
+    font-size: 16px;
+    color: var(--preto);
+}
+
+.photo_text {
+    font-size: 16px;
+    color: var(--preto);
+}
+
+.foto {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: opacity 0.5s ease;
+}
+
+.selectPhotos {
+    display: flex;
+    flex-direction: row;
+    width: 604px;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+.preview-box {
+    margin-right: 100px;
+}
+
+.preview-img {
+    height: 80px;
+    width: 80px;
+    border: 1px solid var(--roxo);
+    border-radius: 5px;
+    padding: 0;
+    position: absolute;
+}
+
+.remove-btn {
+    background-color: var(--roxo);
+    color: var(--branco);
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.ctn_plano {
+    width: 1100px;
+}
+
+.plano {
+    width: 736px;
+    height: 450px;
+}
+
+.ctn_planoBox {
+    width: 1400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.plano_box {
+    height: 450px;
+    width: 350px;
+    background-color: var(--lilas-claro);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.plano_box:hover {
+    background-color: var(--lilas);
+    border: 5px dashed var(--branco);
+}
+
+.selecionado {
+    border: 5px dashed var(--roxo);
+}
+
+.title_box {
+    color: var(--branco);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.box_price {
+    color: var(--roxo);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.cnt_btnPlano {
+    margin-top: 350px;
+    margin-left: 40px;
+    width: 1320px;
+    justify-content: space-between;
+    padding: 0 40px;
+}

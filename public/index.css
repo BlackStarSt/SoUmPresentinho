@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap'); /*Fonte: Roboto Condensad*/
+
+body {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: var(--bege);
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}

@@ -1,0 +1,85 @@
+.visualizer {
+    height: 723px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title_visu {
+    color: var(--roxo);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.ctn_visu {
+    background-color: var(--branco);
+    height: 700px;
+    width: 500px;
+    border-radius: 15px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.ctn_url {
+    width: 480px;
+    height: 40px;
+    border: 1px solid var(--roxo);
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.ctn_spotify {
+    width: 480px;
+    height: 80px;
+    border-radius: 15px;
+}
+
+.ctn_fotos {
+    width: 200px;
+    height: 300px;
+}
+
+.foto {
+    width: 200px;
+    height: 300px;
+    padding: 0;
+}
+
+.ctn_textos {
+    height: 200px;
+    width: 410px;
+}
+
+hr {
+    height: 1px;
+    background-color: var(--roxo);
+    margin: 10px 0;
+}
+
+.textos_title {
+    font-size: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.textos_message {
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    height: 152px;
+    overflow-y: auto;
+    padding-right: 8px;
+}

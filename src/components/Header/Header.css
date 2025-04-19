@@ -1,8 +1,16 @@
 header {
-    background: #6200ea;
-    padding: 15px;
-    color: white;
+    background: var(--lilas);
+    padding: 15px 100px;
+    color: var(--branco);
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 140px;
+    background-image: url('../../assets/icons/confete.png');
+    background-repeat: repeat-x;
+    background-size: 15%;
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.25);
   }
   
   nav ul {
@@ -17,4 +25,24 @@ header {
     color: white;
     text-decoration: none;
   }
+
+  .btnLogin {
+    width: 120px;
+    height: 53px;
+    background: var(--roxo);
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--branco);
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+  }
   
+  .btnLogin:hover {
+    outline: none;
+    background-color: var(--marrom)
+  }
