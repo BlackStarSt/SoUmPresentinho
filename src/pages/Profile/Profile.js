@@ -1,57 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../db/firebase.js";
 
 import '../Profile/Profile.css';
 import user from '../../assets//icons/user.png'
 
-import { db } from "../../db/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
-
 const Profile = () => {
-    const [userData, setUserData] = useState({
-        email: '',
-        nome: ''
-    });
-
-    const navigate = useNavigate();
+    const [userData, setUserData] = useState({ nome: "", email: "" });
 
     useEffect(() => {
-        // Verifica se o usuário está logado
-        const userEmail = localStorage.getItem('userEmail');
-        if (!userEmail) {
-            navigate('/login'); // Se não estiver logado, redireciona para a página de login
-            return;
-        }
-
-        // Se o usuário estiver logado, busca os dados do usuário no Firestore
         const fetchUserData = async () => {
+            const emailUsuario = localStorage.getItem("emailUsuario");
+
+            if (!emailUsuario) return;
+
             try {
-                const q = query(
-                    collection(db, "usuarios"),
-                    where("email", "==", userEmail)
-                );
+                const usuariosRef = collection(db, "usuarios");
+                const q = query(usuariosRef, where("email", "==", emailUsuario));
                 const querySnapshot = await getDocs(q);
 
                 if (!querySnapshot.empty) {
-                    querySnapshot.forEach((doc) => {
-                        const user = doc.data();
-                        setUserData({
-                            email: user.email,
-                            nome: user.nome
-                        });
-                    });
-                } else {
-                    console.log('Usuário não encontrado!');
-                    alert('Usuário não encontrado!');
+                    const doc = querySnapshot.docs[0];
+                    setUserData(doc.data());
                 }
             } catch (error) {
-                console.error("Erro ao carregar dados do usuário:", error);
-                alert('Erro ao carregar os dados do usuário.');
+                console.error("Erro ao buscar dados do usuário:", error);
             }
         };
 
         fetchUserData();
-    }, [navigate]);
+    }, []);
 
     return (
         <div className="container_profile">

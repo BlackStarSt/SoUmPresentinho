@@ -35,8 +35,9 @@ const Login = () => {
             } else {
                 querySnapshot.forEach((doc) => {
                     const userData = doc.data();
-                    localStorage.setItem('userEmail', userData.email);
-                    localStorage.setItem('userName', userData.name);
+
+                    localStorage.setItem('emailUsuario', userData.email);
+                    localStorage.setItem('nomeUsuario', userData.nome);
                 });
 
                 navigate('/profile');

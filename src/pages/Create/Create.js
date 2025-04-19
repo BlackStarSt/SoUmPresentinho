@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import Visualizer from "../../components/Visualizer/Visualizer";
 import ButtonsEtapas from "../../components/Buttons/Buttons";
 
-import '../Create/Create.css';
+import "../Create/Create.css";
 
 import Nome from "../../components/Etapas/Nome";
 import Titulo from "../../components/Etapas/Titulo";
@@ -14,7 +15,6 @@ import Plano from "../../components/Etapas/Plano";
 
 const Create = () => {
     const [etapaAtual, setEtapaAtual] = useState(0);
-
     const [formData, setFormData] = useState({
         nome: "",
         titulo: "",
@@ -23,15 +23,6 @@ const Create = () => {
         musica: "",
         plano: ""
     });
-
-    const etapas = [
-        <Nome formData={formData} setFormData={setFormData} />,
-        <Titulo formData={formData} setFormData={setFormData} />,
-        <Mensagem formData={formData} setFormData={setFormData} />,
-        <Fotos formData={formData} setFormData={setFormData} />,
-        <Musica formData={formData} setFormData={setFormData} />,
-        <Plano formData={formData} setFormData={setFormData} />
-    ];
 
     const avancar = () => {
         if (etapaAtual < etapas.length - 1) {
@@ -44,6 +35,15 @@ const Create = () => {
             setEtapaAtual(etapaAtual - 1);
         }
     };
+
+    const etapas = [
+        <Nome formData={formData} setFormData={setFormData} />,
+        <Titulo formData={formData} setFormData={setFormData} />,
+        <Mensagem formData={formData} setFormData={setFormData} />,
+        <Fotos formData={formData} setFormData={setFormData} />,
+        <Musica formData={formData} setFormData={setFormData} />,
+        <Plano formData={formData} setFormData={setFormData} />
+    ];
 
     return (
         <div className={`ctn_create ${etapaAtual === etapas.length - 1 ? 'ctn_plano' : ''}`}>
