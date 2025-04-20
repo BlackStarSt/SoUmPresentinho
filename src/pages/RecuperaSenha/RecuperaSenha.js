@@ -29,8 +29,10 @@ const RecuperaSenha = () => {
     return (
         <div className="senha">
             <div className="container">
+                <div className="container_senha"></div>
                 {message && <div className="message_senha">{message}</div>}
                 <h2 className="senha_title">Recuperar senha</h2>
+                <p className="senha_subtitle">Insira o e-mail cadastrado para realizar a troca de senha</p>
                 <form className="ctn_login" onSubmit={handleSubmit}>
                     <div className="input_ctn">
                         <label>E-mail</label>

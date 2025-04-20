@@ -15,7 +15,11 @@
 
 .senha_title {
     color: var(--roxo);
-    font-size: 32px;
+    font-size: 48px;
+}
+
+.senha_subtitle {
+    font-size: 20px;
 }
 
 .message_senha {
@@ -33,6 +37,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-left: 10px;
 }
 
 .s_btn {
