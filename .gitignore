@@ -1,6 +1,5 @@
 node_modules
 
-<<<<<<< HEAD
 # dependencies
 /node_modules
 /.pnp
@@ -23,6 +22,5 @@ firebase.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-=======
+
 /src/db/firebase.js
->>>>>>> a40fd37aafbb60d371bcdf029f4ed335e5871fca
