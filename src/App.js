@@ -21,8 +21,8 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/create" element={<Create />} />
           <Route path="/profile" element={<Profile />}/>
-          <Route path="page/:url" element={<Pagina />}/>
-          <Route path="recuperaSenha" element={<RecuperaSenha />}/>
+          <Route path="/page/:url" element={<Pagina />}/>
+          <Route path="/recuperaSenha" element={<RecuperaSenha />}/>
         </Routes>
       </main>
     </div>
