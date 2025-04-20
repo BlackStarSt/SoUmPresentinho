@@ -74,7 +74,7 @@ const Login = () => {
                 </form>
                 <div className="ctn_btns">
                     <button className="btnCheck" onClick={handleLogin}>Entrar</button>
-                    <a href="/" className="btnSenha">Esqueceu a senha?</a>
+                    <a href="/recuperaSenha" className="btnSenha">Esqueceu a senha?</a>
                     <img src={compOu} alt="#" className="divider" />
                     <Link to={'/cadastro'} className="btnConta">
                         <button className="btnConta">Criar uma conta</button>
