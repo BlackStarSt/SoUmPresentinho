@@ -4,12 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import "../Login/Login.css";
 import compOu from '../../assets/icons/ou.png'
 
-import { db } from "../../db/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [message, setMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -17,40 +17,34 @@ const Login = () => {
         e.preventDefault();
 
         if (!email || !senha) {
-            alert('Por favor, preencha todos os campos!');
+            setMessage('Por favor, preencha todos os campos!');
             return;
         }
 
+        const auth = getAuth();
+
         try {
-            const q = query(
-                collection(db, "usuarios"),
-                where("email", "==", email),
-                where("senha", "==", senha)
-            );
+            const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+            const user = userCredential.user;
 
-            const querySnapshot = await getDocs(q);
+            localStorage.setItem('emailUsuario', user.email);
 
-            if (querySnapshot.empty) {
-                alert('Usuário não encontrado ou senha incorreta!');
-            } else {
-                querySnapshot.forEach((doc) => {
-                    const userData = doc.data();
-
-                    localStorage.setItem('emailUsuario', userData.email);
-                    localStorage.setItem('nomeUsuario', userData.nome);
-                });
-
-                navigate('/profile');
-            }
+            navigate('/profile');
         } catch (error) {
-            console.error("Erro ao tentar logar:", error);
-            alert('Houve um erro ao tentar realizar o login.');
+            if (error.code === "auth/user-not-found") {
+                setMessage("Usuário não encontrado.");
+            } else if (error.code === "auth/wrong-password" || error.code === "auth/invalid-credential") {
+                setMessage("Email ou Senha incorreta.");
+            } else {
+                setMessage("Erro ao tentar realizar login.");
+            }
         }
     };
 
     return (
         <div className="login">
             <div className="container">
+                {message && <div className="message_senha">{message}</div>}
                 <p className="title">Login</p>
                 <form className="ctn_login" onSubmit={handleLogin}>
                     <div className="input_ctn">
