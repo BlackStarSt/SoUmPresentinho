@@ -8,7 +8,18 @@ import '../Pagina/Pagina.css';
 const Pagina = () => {
     const { url } = useParams();
     const [data, setData] = useState({});
+
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        if (data.fotos && data.fotos.length > 0) {
+            const interval = setInterval(() => {
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % data.fotos.length);
+            }, 3000);
+
+            return () => clearInterval(interval);
+        }
+    }, [data.fotos]);
 
     useEffect(() => {
         const fetchData = async () => {

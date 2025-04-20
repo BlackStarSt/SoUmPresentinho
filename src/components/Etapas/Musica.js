@@ -27,6 +27,7 @@ const Musica = ({ formData, setFormData }) => {
 
     const handleChange = (e) => {
         setFormData({ ...formData, musica: e.target.value });
+        console.log('Embed URL:', embedUrl);
     };
 
     return (

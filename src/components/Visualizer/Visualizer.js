@@ -33,7 +33,7 @@ const Visualizer = ({ data }) => {
                 <div className="ctn_spotify">
                     {data.musica && (
                         <iframe className="ctn_spotify"
-                            src={`https://open.spotify.com/embed/track/${extrairSpotifyTrackId(data.musica)}`}
+                            src={`https://open.spotify.com/embed/track/${extrairSpotifyTrackId(data.musica)}?utm_source=generator`}
                             width="300"
                             height="80"
                             frameBorder="0"
