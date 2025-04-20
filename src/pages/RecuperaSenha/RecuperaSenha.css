@@ -1,0 +1,50 @@
+.senha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ctn_senha {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.senha_title {
+    color: var(--roxo);
+    font-size: 32px;
+}
+
+.message_senha {
+    padding: 10px 10px;
+    background-color: var(--roxo);
+    color: var(--branco);
+    border: 3px dashed var(--branco);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.senha_btns {
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.s_btn {
+    height: 36.5px;
+    width: 150px;
+    color: var(--branco);
+    background-color: var(--roxo);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.s_btn:hover {
+    background-color: var(--marrom);
+}
