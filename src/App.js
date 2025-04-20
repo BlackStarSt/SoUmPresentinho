@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Create from "./pages/Create/Create";
 import Profile from "./pages/Profile/Profile";
+import Pagina from "./pages/Pagina/Pagina";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/create" element={<Create />} />
           <Route path="/profile" element={<Profile />}/>
+          <Route path="/:url" element={<Pagina />}/>
         </Routes>
       </main>
     </div>

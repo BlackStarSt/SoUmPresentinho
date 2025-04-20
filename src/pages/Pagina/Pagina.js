@@ -1,39 +1,48 @@
 import React, { useEffect, useState } from "react";
-import '../Visualizer/Visualizer.css';
+import { useParams } from "react-router-dom";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../db/firebase";
 
-const Visualizer = ({ data }) => {
+import '../Pagina/Pagina.css';
+
+const Pagina = () => {
+    const { url } = useParams();
+    const [data, setData] = useState({});
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        if (data.fotos && data.fotos.length > 0) {
-            const interval = setInterval(() => {
-                setCurrentIndex((prevIndex) => (prevIndex + 1) % data.fotos.length);
-            }, 3000);
+        const fetchData = async () => {
+            try {
+                const paginasRef = collection(db, "paginas");
+                const q = query(paginasRef, where("url", "==", url));
+                const querySnapshot = await getDocs(q);
 
-            return () => clearInterval(interval);
-        }
-    }, [data.fotos]);
+                if (!querySnapshot.empty) {
+                    const doc = querySnapshot.docs[0];
+                    setData(doc.data());
+                }
+            } catch (error) {
+                console.error("Erro ao buscar dados da página:", error);
+            }
+        };
+
+        fetchData();
+    }, [url]);
 
     const extrairSpotifyTrackId = (url) => {
-        try {
-            const parsedUrl = new URL(url);
-            const pathParts = parsedUrl.pathname.split('/');
-            const trackIndex = pathParts.findIndex(part => part === 'track');
-            return trackIndex !== -1 ? pathParts[trackIndex + 1] : null;
-        } catch {
-            return null;
-        }
+        const regex = /track\/([a-zA-Z0-9]+)/;
+        const match = url.match(regex);
+        return match ? match[1] : "";
     };
 
     return (
-        <div className="visualizer">
-            <h2 className="title_visu">Pré-visualização</h2>
-            <div className="ctn_visu">
-                <div className="ctn_url">soumalembraancinha.com/{data.url}</div>
+        <div className="pagina">
+            <div className="container_pagina">
                 <div className="ctn_spotify">
                     {data.musica && (
-                        <iframe className="ctn_spotify"
-                            src={`https://open.spotify.com/embed/track/${extrairSpotifyTrackId(data.musica)}`}
+                        <iframe
+                            className="ctn_spotify"
+                            src={`https://open.spotify.com/embed/track/${extrairSpotifyTrackId(data.musica)}?autoplay=1`}
                             width="300"
                             height="80"
                             frameBorder="0"
@@ -43,6 +52,7 @@ const Visualizer = ({ data }) => {
                         ></iframe>
                     )}
                 </div>
+
                 <div className="ctn_fotos">
                     {data.fotos && data.fotos.length > 0 && (
                         <img
@@ -52,6 +62,7 @@ const Visualizer = ({ data }) => {
                         />
                     )}
                 </div>
+
                 <div className="ctn_textos">
                     <h3 className="textos_title">{data.titulo}</h3>
                     <hr />
@@ -60,6 +71,6 @@ const Visualizer = ({ data }) => {
             </div>
         </div>
     );
-}
+};
 
-export default Visualizer;
+export default Pagina;
