@@ -1,0 +1,40 @@
+.pagina {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 780px;
+    justify-content: center;
+}
+
+.container_pagina {
+    width: 1200px;
+    height: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container_pagina > .ctn_fotos {
+    height: 350px;
+    width: 300px;
+}
+
+.container_pagina > .ctn_fotos > .foto {
+    height: 350px;
+    width: 300px;
+}
+
+.container_pagina > .ctn_textos {
+    width: 810px;
+}
+
+.container_pagina > .ctn_textos > .textos_title {
+    font-size: 28px;
+    height: 28px;
+    font-weight: bold;
+}
+
+.container_pagina > .ctn_textos > .textos_message {
+    font-size: 20px;
+}
