@@ -89,7 +89,7 @@ const Profile = () => {
                                                 style={{ cursor: "pointer" }}
                                             >
                                                 <p><strong>URL: /</strong>{page.url}</p>
-                                                <p><strong>Título: </strong>{page.plano}</p>
+                                                <p><strong>Plano: </strong>{page.plano}</p>
                                                 <p><strong>Data: </strong>{new Date(page.criado_em.toDate ? page.criado_em.toDate() : page.criado_em).toLocaleDateString('pt-BR')}</p>
                                             </div>
                                         ))}
