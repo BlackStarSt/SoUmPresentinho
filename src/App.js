@@ -9,6 +9,8 @@ import Create from "./pages/Create/Create";
 import Profile from "./pages/Profile/Profile";
 import Pagina from "./pages/Pagina/Pagina";
 import RecuperaSenha from "./pages/RecuperaSenha/RecuperaSenha";
+import PagamentoWrapper from "./pages/Pagamento/Pagamento";
+import Sucesso from "./pages/Pagamento/Sucesso";
 
 function App() {
   return (
@@ -21,8 +23,10 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/create" element={<Create />} />
           <Route path="/profile" element={<Profile />}/>
-          <Route path="/:url" element={<Pagina />}/>
+          <Route path="page/:url" element={<Pagina />}/>
           <Route path="/recuperaSenha" element={<RecuperaSenha />}/>
+          <Route path="/pagamento" element={<PagamentoWrapper />} />
+          <Route path="/sucesso" element={<Sucesso />} />
         </Routes>
       </main>
     </div>
