@@ -1,0 +1,32 @@
+.container_pagamento {
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_pagamento > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.nome_pagamento {
+    margin-left: 120px;
+    margin-top: 20px;
+    border: 1px solid var(--roxo);
+}
+
+.opt_pagamento {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.opt_pagamento > label {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.opt_pagamento > label > input {
+    width: 50px;
+}
