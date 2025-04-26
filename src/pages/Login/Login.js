@@ -27,7 +27,7 @@ const Login = () => {
             const userCredential = await signInWithEmailAndPassword(auth, email, senha);
             const user = userCredential.user;
 
-            localStorage.setItem('emailUsuario', user.email);
+            sessionStorage.setItem('emailUsuario', user.email);
 
             navigate('/profile');
         } catch (error) {
