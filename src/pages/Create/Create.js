@@ -113,7 +113,6 @@ const Create = () => {
         <Musica formData={formData} setFormData={setFormData} />,
         <Plano formData={formData} setFormData={setFormData} setValor={setValor} />,
         <PagamentoWrapper valorPlano={valor} selectedPlan={formData.plano} />
-
     ];
 
     return (

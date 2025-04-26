@@ -20,7 +20,7 @@
     justify-content: space-evenly;
 }
 
-.opt_pagamento > label {
+.opt_pagamento > label, .opt_recorrente  {
     width: 30px;
     display: flex;
     align-items: center;
@@ -29,4 +29,21 @@
 
 .opt_pagamento > label > input {
     width: 50px;
+}
+
+.label_recorrente {
+    padding-left: 10px;
+    font-size: 15px;
+    color: var(--roxo);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+    justify-content: space-evenly
+}
+
+.recorrente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

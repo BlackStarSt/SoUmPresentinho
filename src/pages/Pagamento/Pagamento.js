@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import stripePromise from './StripeConfig';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+
 import '../Pagamento/Pagamento.css';
 
 const Pagamento = ({ valorPlano, selectedPlan }) => {
@@ -23,7 +25,17 @@ const Pagamento = ({ valorPlano, selectedPlan }) => {
 
         setCarregando(true);
 
+        const cardElement = elements.getElement(CardElement);
+
+        const { token, error } = await stripe.createToken(cardElement, { name: nome });
+
         try {
+            if (error) {
+                setErro("Erro ao processar pagamento. Tente novamente.");
+                setCarregando(false);
+                return;
+            }
+
             if (metodoPagamento === 'Cartão') {
                 const cardElement = elements.getElement(CardElement);
                 if (!cardElement) return;
@@ -47,13 +59,20 @@ const Pagamento = ({ valorPlano, selectedPlan }) => {
             }
 
             if (planoRecorrente) {
-                console.log("Criando pagamento recorrente...");
+                if (selectedPlan === 'Mensal') {
+                    console.log("Criando pagamento recorrente mensal...");
+                } else if (selectedPlan === 'Anual') {
+                    console.log("Criando pagamento anual...");
+                } else {
+                    console.log("Criando pagamento vitalício...");
+                }
             }
 
         } catch (err) {
             console.error('Erro ao processar pagamento:', err);
             setErro("Erro inesperado. Tente novamente mais tarde.");
         } finally {
+            console.log('Token gerado:', token);
             setCarregando(false);
         }
     };
@@ -101,15 +120,31 @@ const Pagamento = ({ valorPlano, selectedPlan }) => {
                 {metodoPagamento === 'Cartão' && (
                     <>
                         <CardElement options={{ hidePostalCode: true }} />
-                        <div>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    checked={planoRecorrente}
-                                    onChange={() => setPlanoRecorrente(!planoRecorrente)}
-                                /> Pagamento recorrente (mensal)
-                            </label>
-                        </div>
+                        {selectedPlan === 'Mensal' && (
+                            <div className='recorrente'>
+                                <label className='label_recorrente'>
+                                    <input className='opt_recorrente'
+                                        type="checkbox"
+                                        checked={planoRecorrente}
+                                        onChange={() => setPlanoRecorrente(!planoRecorrente)}
+                                    /> Pagamento recorrente mensal
+                                </label>
+                            </div>
+                        )}
+                        {selectedPlan === 'Anual' && (
+                            <div>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        checked={planoRecorrente}
+                                        onChange={() => setPlanoRecorrente(!planoRecorrente)}
+                                    /> Pagamento recorrente anual
+                                </label>
+                            </div>
+                        )}
+                        {selectedPlan === 'Vitalício' && (
+                            <label>Este plano é vitalício. Pagamento único.</label>
+                        )}
                     </>
                 )}
 
@@ -123,7 +158,7 @@ const Pagamento = ({ valorPlano, selectedPlan }) => {
 
 const PagamentoWrapper = ({ valorPlano, selectedPlan }) => (
     <Elements stripe={stripePromise}>
-        <Pagamento valorPlano={valorPlano} selectedPlan={selectedPlan}/>
+        <Pagamento valorPlano={valorPlano} selectedPlan={selectedPlan} />
     </Elements>
 );
 
