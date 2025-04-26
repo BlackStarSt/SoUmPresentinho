@@ -195,3 +195,17 @@
     justify-content: space-between;
     padding: 0 40px;
 }
+
+.url_erro {
+    color: var(--branco);
+    text-align: center;
+    font-size: 20px;
+    background-color: var(--roxo);
+    width: 450px;
+    height: 25px;
+    border: 3px dashed var(--branco);
+    border-radius: 15px;
+    margin-left: 80px;
+    margin-top: 10px;
+    padding: 5px;
+}
