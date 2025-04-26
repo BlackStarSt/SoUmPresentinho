@@ -5,6 +5,8 @@
   "dependencies": {
     "@react-native-firebase/app": "^21.14.0",
     "@react-native-firebase/firestore": "^21.14.0",
+    "@stripe/react-stripe-js": "^3.6.0",
+    "@stripe/stripe-js": "^7.2.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
