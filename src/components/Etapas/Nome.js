@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../db/firebase";
+
 import '../../pages/Create/Create.css';
 
 const Nome = ({ formData, setFormData }) => {
+    const [urlError, setUrlError] = useState(false);
+
+    useEffect(() => {
+        const checkUrlExists = async (url) => {
+            const paginasRef = collection(db, "paginas");
+            const q = query(paginasRef, where("url", "==", url));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                setUrlError(true)
+            } else {
+                setUrlError(false);
+            }
+        };
+
+        if (formData.url) {
+            checkUrlExists(formData.url);
+        }
+    }, [formData.url]);
+
     const handleChange = (e) => {
         const valorFormatado = e.target.value.replace(/\s+/g, '-');
+
         setFormData({ ...formData, url: valorFormatado });
     };
 
@@ -18,7 +43,11 @@ const Nome = ({ formData, setFormData }) => {
                         type="text"
                         value={formData.url || ''}
                         onChange={handleChange}
+                        required
                     />
+                    {urlError && (
+                        <p className="url_erro">Essa URL já existe no banco. Escolha outra.</p>
+                    )}
                 </div>
             </div>
         </div>
