@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../db/firebase.js";
 
@@ -10,12 +11,15 @@ const Profile = () => {
     const [userData, setUserData] = useState({ nome: "", email: "" });
     const [userPages, setUserPages] = useState([]);
     const [paginaAtual, setPaginaAtual] = useState(0);
+
     const paginasPorPagina = 3;
 
-    useEffect(() => {
-        const fetchUserData = async () => {
-            const emailUsuario = localStorage.getItem("emailUsuario");
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        const emailUsuario = sessionStorage.getItem("emailUsuario");
+        
+        const fetchUserData = async () => {
             if (!emailUsuario) return;
 
             try {
@@ -58,6 +62,11 @@ const Profile = () => {
         if (paginaAtual < totalPaginas - 1) setPaginaAtual(paginaAtual + 1);
     };
 
+    const handleLogout = () => {
+        sessionStorage.removeItem("emailUsuario");
+        navigate("/login");
+    };
+
     return (
         <div className="container_profile">
             <div className="container">
@@ -66,7 +75,7 @@ const Profile = () => {
                     <div className="profile_data">
                         <h2 className="profile_title">Dados</h2>
                         <div className="profile_texts">
-                            <p className="profile_name">Nome: {userData.nome}</p>
+                            <p className="profile_name">Nome: {userData.nome} {userData.sobrenome}</p>
                             <p className="profile_email">Email: {userData.email}</p>
                         </div>
                         <div className="profile_pages">
@@ -76,12 +85,12 @@ const Profile = () => {
                                     <>
                                         {paginasVisiveis.map((page) => (
                                             <div key={page.id} className="box_page"
-                                                onClick={() => window.location.href = `/page/${page.url}`}
+                                                onClick={() => window.open(`/page/${page.url}`, '_blank')}
                                                 style={{ cursor: "pointer" }}
                                             >
                                                 <p><strong>URL: /</strong>{page.url}</p>
-                                                <p><strong>Título:</strong> {page.titulo}</p>
-                                                <p><strong>Plano:</strong> {page.plano}</p>
+                                                <p><strong>Título: </strong>{page.plano}</p>
+                                                <p><strong>Data: </strong>{new Date(page.criado_em.toDate ? page.criado_em.toDate() : page.criado_em).toLocaleDateString('pt-BR')}</p>
                                             </div>
                                         ))}
                                     </>
@@ -110,8 +119,7 @@ const Profile = () => {
                     <Link to={'/create'} className="p_btn">
                         <button className="p_btn">Nova página</button>
                     </Link>
-                    <button className="p_btn">Editar perfil</button>
-                    <button className="p_btn">Sair</button>
+                    <button className="p_btn" onClick={handleLogout}>Sair</button>
                 </div>
             </div>
         </div>

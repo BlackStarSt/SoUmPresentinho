@@ -27,7 +27,6 @@
 .profile_texts {
     height: 80px;
     border-bottom: 3px solid var(--branco);
-    padding-bottom: 15px;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
@@ -35,17 +34,17 @@
     align-items: center;
 }
 
-.profile_texts > p {
+.profile_texts>p {
     font-size: 20px;
 }
 
 .profile_pages {
     width: 520px;
-    height: 150px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .btn_pgs {
@@ -71,11 +70,12 @@
 
 .box_page {
     height: 80px;
-    width: 120px;
+    width: 130px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     border: 3px dashed var(--roxo);
     background-color: var(--lilas-claro);
     color: var(--branco);
@@ -88,15 +88,19 @@
     background-color: var(--marrom);
 }
 
-.box_page > p {
+.box_page>p {
     font-size: 16px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .profile_btns {
     width: 400px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .p_btn {
@@ -107,6 +111,10 @@
     background-color: var(--roxo);
     color: var(--branco);
     border-radius: 10px;
+}
+
+.p_btn:nth-child(2):hover {
+    background-color: brown;
 }
 
 .p_btn:hover {
