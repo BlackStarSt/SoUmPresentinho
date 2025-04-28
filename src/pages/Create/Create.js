@@ -16,7 +16,7 @@ import Mensagem from "../../components/Etapas/Mensagem";
 import Fotos from "../../components/Etapas/Fotos";
 import Musica from "../../components/Etapas/Musica";
 import Plano from "../../components/Etapas/Plano";
-import PagamentoWrapper from "../Pagamento/Pagamento";
+import Sucesso from "../../components/Etapas/Sucesso";
 
 const Create = () => {
     const [etapaAtual, setEtapaAtual] = useState(0);
@@ -61,15 +61,8 @@ const Create = () => {
     const [mensagemErro, setMensagemErro] = useState('');
 
     const avancar = () => {
-        if (etapaAtual === etapas.length - 2) {
-            if (!formData.plano) {
-                setMensagemErro('Você precisa selecionar um plano!');
-                return;
-            }
-        }
-    
         setMensagemErro('');
-    
+
         let campoAtual = '';
         switch (etapaAtual) {
             case 0:
@@ -84,16 +77,28 @@ const Create = () => {
             default:
                 campoAtual = '';
         }
-    
+
         if (campoAtual && formData[campoAtual].trim() === '') {
-            setMensagemErro(`Por favor, preencha o campo acima!`);
+            setMensagemErro('Por favor, preencha o campo acima!');
+            setTimeout(() => {
+                setMensagemErro('');
+            },3000);
             return;
         }
     
+        if (etapaAtual === 5) {
+            if (!formData.plano) {
+                setMensagemErro('Você precisa selecionar um plano!');
+                setTimeout(() => {
+                    setMensagemErro('');
+                }, 3000);
+                return;
+            }
+            salvarDados();
+        }
+
         if (etapaAtual < etapas.length - 1) {
             setEtapaAtual(etapaAtual + 1);
-        } else {
-            salvarDados();
         }
     };
 
@@ -103,35 +108,40 @@ const Create = () => {
         }
     };
 
-    const [valor, setValor] = useState(0);
-
     const etapas = [
         <Nome formData={formData} setFormData={setFormData} />,
         <Titulo formData={formData} setFormData={setFormData} />,
         <Mensagem formData={formData} setFormData={setFormData} />,
         <Fotos formData={formData} setFormData={setFormData} />,
         <Musica formData={formData} setFormData={setFormData} />,
-        <Plano formData={formData} setFormData={setFormData} setValor={setValor} />,
-        <PagamentoWrapper valorPlano={valor} selectedPlan={formData.plano} />
+        <Plano formData={formData} setFormData={setFormData} />,
+        <Sucesso data={formData} />
     ];
 
     return (
         <div className={`ctn_create ${etapaAtual === etapas.length - 2 ? 'ctn_plano' : ''}`}>
             <div className={`create ${etapaAtual === etapas.length - 2 ? 'plano' : ''}`}>
-
                 <ProgressBar etapaAtual={etapaAtual} />
-                {etapas[etapaAtual]}
+
+                {etapaAtual < etapas.length - 1 ? (
+                    etapas[etapaAtual]
+                ) : (
+                    <Sucesso data={formData} />
+                )}
+
                 {mensagemErro && (
                     <div className="url_erro">
                         {mensagemErro}
                     </div>
                 )}
-                
-                <ButtonsEtapas
-                    onAvancar={avancar}
-                    onVoltar={voltar}
-                    isPlano={etapaAtual === 5}
-                />
+
+                {etapaAtual !== etapas.length - 1 && (
+                    <ButtonsEtapas
+                        onAvancar={avancar}
+                        onVoltar={voltar}
+                        isPlano={etapaAtual === 5}
+                    />
+                )}
             </div>
 
             {etapaAtual !== etapas.length - 2 && (
