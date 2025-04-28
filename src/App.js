@@ -9,8 +9,7 @@ import Create from "./pages/Create/Create";
 import Profile from "./pages/Profile/Profile";
 import Pagina from "./pages/Pagina/Pagina";
 import RecuperaSenha from "./pages/RecuperaSenha/RecuperaSenha";
-import PagamentoWrapper from "./pages/Pagamento/Pagamento";
-import Sucesso from "./pages/Pagamento/Sucesso";
+import PaginaExpirada from "./pages/Pagina/PaginaExpirada";
 
 function App() {
   return (
@@ -25,8 +24,7 @@ function App() {
           <Route path="/profile" element={<Profile />}/>
           <Route path="page/:url" element={<Pagina />}/>
           <Route path="/recuperaSenha" element={<RecuperaSenha />}/>
-          <Route path="/pagamento" element={<PagamentoWrapper />} />
-          <Route path="/sucesso" element={<Sucesso />} />
+          <Route path="/indisponivel" element={<PaginaExpirada />} />
         </Routes>
       </main>
     </div>
