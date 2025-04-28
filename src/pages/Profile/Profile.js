@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../db/firebase.js";
-
 import "../Profile/Profile.css";
 import user from "../../assets/icons/user.svg";
 
@@ -11,14 +9,14 @@ const Profile = () => {
     const [userData, setUserData] = useState({ nome: "", email: "" });
     const [userPages, setUserPages] = useState([]);
     const [paginaAtual, setPaginaAtual] = useState(0);
+    const [message, setMessage] = useState('');
 
     const paginasPorPagina = 3;
-
     const navigate = useNavigate();
 
     useEffect(() => {
         const emailUsuario = sessionStorage.getItem("emailUsuario");
-        
+
         const fetchUserData = async () => {
             if (!emailUsuario) return;
 
@@ -38,8 +36,25 @@ const Profile = () => {
 
                 const pagesData = [];
                 paginaSnapshot.forEach((doc) => {
-                    pagesData.push({ id: doc.id, ...doc.data() });
+                    const pageData = doc.data();
+                    const pageCreationTime = pageData.criado_em.toDate ? pageData.criado_em.toDate() : pageData.criado_em;
+
+                    let expirationTime = null;
+                    if (pageData.plano === 'Mensal') {
+                        expirationTime = new Date(pageCreationTime);
+                        expirationTime.setMonth(expirationTime.getMonth() + 1);
+                    } else if (pageData.plano === 'Anual') {
+                        expirationTime = new Date(pageCreationTime);
+                        expirationTime.setFullYear(expirationTime.getFullYear() + 1);
+                    } else if (pageData.plano === 'Vitalício') {
+                        expirationTime = null;
+                    }
+
+                    const isExpired = expirationTime && new Date().getTime() > expirationTime.getTime();
+
+                    pagesData.push({ id: doc.id, ...pageData, isExpired });
                 });
+
                 setUserPages(pagesData);
 
             } catch (error) {
@@ -49,6 +64,19 @@ const Profile = () => {
 
         fetchUserData();
     }, []);
+
+    const handlePageClick = (e, page) => {
+        if (page.isExpired) {
+            e.preventDefault();
+            setMessage("Esta página está expirada e não pode ser acessada.");
+
+            setTimeout(() => {
+                setMessage('');
+            }, 2000);
+        } else {
+            window.open(`/page/${page.url}`, '_blank');
+        }
+    };
 
     const totalPaginas = Math.ceil(userPages.length / paginasPorPagina);
     const inicio = paginaAtual * paginasPorPagina;
@@ -80,17 +108,25 @@ const Profile = () => {
                         </div>
                         <div className="profile_pages">
                             <h3>Páginas do usuário:</h3>
+                            {message && <div className="error_message">{message}</div>}
                             <div className="ctn_boxs">
                                 {userPages.length > 0 ? (
                                     <>
                                         {paginasVisiveis.map((page) => (
-                                            <div key={page.id} className="box_page"
-                                                onClick={() => window.open(`/page/${page.url}`, '_blank')}
-                                                style={{ cursor: "pointer" }}
+                                            <div
+                                                key={page.id}
+                                                className="box_page"
+                                                onClick={(e) => handlePageClick(e, page)}
+                                                style={{
+                                                    cursor: "pointer",
+                                                    opacity: page.isExpired ? 0.5 : 1,
+                                                    border: page.isExpired ? "3px dashed red" : "3px dashed var(--roxo)"
+                                                }}
                                             >
                                                 <p><strong>URL: /</strong>{page.url}</p>
                                                 <p><strong>Plano: </strong>{page.plano}</p>
                                                 <p><strong>Data: </strong>{new Date(page.criado_em.toDate ? page.criado_em.toDate() : page.criado_em).toLocaleDateString('pt-BR')}</p>
+                                                {page.isExpired && <p className="expired">Página Expirada</p>}
                                             </div>
                                         ))}
                                     </>
@@ -111,7 +147,6 @@ const Profile = () => {
                                     </button>
                                 </div>
                             )}
-
                         </div>
                     </div>
                 </div>
