@@ -15,6 +15,7 @@ const Titulo = ({ formData, setFormData }) => {
                     <input type="text" 
                         value={formData.titulo || ''}
                         onChange={handleChange}
+                        maxLength={45}
                         required
                     />
                 </div>

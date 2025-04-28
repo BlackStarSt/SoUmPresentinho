@@ -44,6 +44,7 @@ const Nome = ({ formData, setFormData }) => {
                         value={formData.url || ''}
                         onChange={handleChange}
                         required
+                        maxLength={30}
                     />
                     {urlError && (
                         <p className="url_erro">Essa URL já existe no banco. Escolha outra.</p>

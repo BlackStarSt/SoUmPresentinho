@@ -16,6 +16,8 @@ const Mensagem = ({ formData, setFormData }) => {
                     <textarea type="text" className="mensagem"
                         value={formData.mensagem || ''}
                         onChange={handleChange}
+                        maxLength={350}
+                        required
                     />
                 </div>
             </div>
