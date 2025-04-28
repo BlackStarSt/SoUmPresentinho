@@ -18,7 +18,6 @@ const Plano = ({ formData, setFormData, setValor }) => {
     const handleSelectPlan = (planName, price) => {
         setSelectedPlan(planName);
         setFormData({ ...formData, plano: planName });
-        setValor(price);
         setError('');
     };
 
