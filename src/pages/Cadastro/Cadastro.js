@@ -98,7 +98,7 @@ const Cadastro = () => {
                     </div>
                 </form>
                 <div className="div_btnCadastro">
-                    <Link to={'/'} className="btnCheck">
+                    <Link to={'/login'} className="btnCheck">
                         <button className="btnCheck">Voltar</button>
                     </Link>
                     <button type="submit" className="btnCheck" onClick={handleSubmit}>Cadastrar</button>

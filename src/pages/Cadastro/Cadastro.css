@@ -38,17 +38,17 @@ input {
     width: 357px;
 }
 
-.nome > input {
+.nome>input {
     grid-area: nome;
     width: 136px;
 }
 
-.sobrenome > input {
+.sobrenome>input {
     grid-area: sobrenome;
     width: 181px;
 }
 
-.btnCheck > button{
+.btnCheck>button {
     width: 230px;
 }
 
@@ -61,4 +61,31 @@ input {
     flex-direction: row;
     width: 377px;
     justify-content: space-around;
+}
+
+@media (max-width: 600px) {
+    .ctn_cadastro {
+        width: 100%;
+        height: auto;
+    }
+
+    .nome_ctn {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nome>input,
+    .sobrenome>input {
+        width: 100%;
+    }
+
+    .div_btnCadastro {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btnCheck>button {
+        width: 100%;
+    }
 }

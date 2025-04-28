@@ -37,7 +37,7 @@ p {
     flex-direction: column;
     justify-content: space-between;
     width: 899px;
-}   
+}
 
 .ctn_btn {
     padding: 0 50px;
@@ -68,7 +68,7 @@ p {
     justify-content: space-between;
 }
 
-.func_section > p {
+.func_section>p {
     text-align: center;
 }
 
@@ -111,7 +111,7 @@ p {
     justify-content: space-between;
 }
 
-.plano_section > .title {
+.plano_section>.title {
     text-align: center;
 }
 
@@ -130,7 +130,7 @@ p {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.25);
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.25);
 }
 
 .plano_title {
@@ -168,4 +168,99 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .home {
+        padding: 0 20px;
+    }
+
+    section {
+        margin: 80px 0;
+        /* Menos espaço vertical */
+    }
+
+    .title {
+        font-size: 36px;
+        /* Títulos menores */
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    .hero_section {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        align-items: center;
+        text-align: center;
+    }
+
+    .ctn_text {
+        width: 100%;
+        align-items: center;
+    }
+
+    .ctn_btn {
+        padding: 20px 0;
+    }
+
+    .hero_img {
+        width: 400px;
+    }
+
+    .btn_hero {
+        width: 100%;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    .func_section {
+        width: 100%;
+        height: auto;
+    }
+
+    .ctn_box {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .box {
+        width: 80%;
+        height: auto;
+        padding: 30px 20px;
+    }
+
+    .plano_section {
+        width: 100%;
+        height: auto;
+        align-items: center;
+    }
+
+    .ctn_boxPlano {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .box_plano {
+        width: 80%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .plano_title,
+    .plano_value {
+        font-size: 24px;
+    }
+
+    .plano_itens {
+        font-size: 18px;
+    }
+
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+    }
 }

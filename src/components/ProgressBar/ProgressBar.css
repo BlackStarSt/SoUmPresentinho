@@ -33,3 +33,23 @@
 .complete {
     background-color: var(--roxo);
 }
+
+@media (max-width: 600px) {
+    .progressBar {
+        width: 100%;
+    }
+
+    .bar {
+        width: 100%;
+    }
+
+    .ctn_points {
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .bar_point {
+        width: 25px;
+        height: 25px;
+    }
+}

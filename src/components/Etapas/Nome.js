@@ -47,7 +47,7 @@ const Nome = ({ formData, setFormData }) => {
                         maxLength={30}
                     />
                     {urlError && (
-                        <p className="url_erro">Essa URL já existe no banco. Escolha outra.</p>
+                        <p className="url_erro">Essa URL já existe!</p>
                     )}
                 </div>
             </div>

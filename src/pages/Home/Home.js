@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import '../Home/Home.css';
 import check from '../../assets/icons/check.png'
-import notCheck from '../../assets/icons/X.png'
 import heroImg from '../../assets/icons/hero_img.png'
 
 const Home = () => {
@@ -55,8 +54,8 @@ const Home = () => {
                             <p className="plano_title">Mensal</p>
                             <ul className="plano_lista">
                                 <li className="plano_itens"><img src={check} alt="check" />Texto dedicado</li>
-                                <li className="plano_itens"><img src={notCheck} alt="not check" />QrCode Exclusivo</li>
-                                <li className="plano_itens"><img src={notCheck} alt="not check" />Máximo de 3 imagens</li>
+                                <li className="plano_itens"><img src={check} alt="check" />QrCode Exclusivo</li>
+                                <li className="plano_itens"><img src={check} alt="check" />Máximo de 3 imagens</li>
                                 <li className="plano_itens"><img src={check} alt="check" />Com música</li>
                                 <li className="plano_itens"><img src={check} alt="check" />URL personalizada</li>
                                 <li className="plano_itens"><img src={check} alt="check" />Uma memória</li>
@@ -67,7 +66,7 @@ const Home = () => {
                             <p className="plano_title">Anual</p>
                             <ul className="plano_lista">
                                 <li className="plano_itens"><img src={check} alt="check" />Texto dedicado</li>
-                                <li className="plano_itens"><img src={notCheck} alt="not check" />QrCode Exclusivo</li>
+                                <li className="plano_itens"><img src={check} alt="check" />QrCode Exclusivo</li>
                                 <li className="plano_itens"><img src={check} alt="check" />Máximo de 3 imagens</li>
                                 <li className="plano_itens"><img src={check} alt="check" />Com música</li>
                                 <li className="plano_itens"><img src={check} alt="check" />URL personalizada</li>

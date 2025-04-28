@@ -10,8 +10,7 @@ const Profile = () => {
     const [userPages, setUserPages] = useState([]);
     const [paginaAtual, setPaginaAtual] = useState(0);
     const [message, setMessage] = useState('');
-
-    const paginasPorPagina = 3;
+    const [paginasPorPagina, setPaginasPorPagina] = useState(3);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -63,6 +62,21 @@ const Profile = () => {
         };
 
         fetchUserData();
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setPaginasPorPagina(2);
+            } else {
+                setPaginasPorPagina(3);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize();
+
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     const handlePageClick = (e, page) => {

@@ -22,3 +22,18 @@
     align-items: center;
     cursor: pointer;
 }
+
+@media (max-width: 600px) {
+    .ctn_btnEtapa {
+        width: 100%;
+        flex-direction: column;
+        margin-top: 30px;
+        align-items: center;
+    }
+
+    .btnEtapa {
+        width: 80%;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+}

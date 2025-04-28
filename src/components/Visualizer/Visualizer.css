@@ -83,3 +83,72 @@ hr {
     overflow-y: auto;
     padding-right: 8px;
 }
+
+@media (max-width: 600px) {
+    .visualizer {
+        width: 95%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .ctn_visu {
+        width: 90%;
+        padding: 10px;
+        justify-content: flex-start;
+    }
+
+    .ctn_url,
+    .ctn_spotify {
+        width: 95%;
+        font-size: 14px;
+        height: 35px;
+    }
+
+    .ctn_url {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .ctn_spotify {
+        width: 100%;
+        height: 80px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+
+    .ctn_fotos {
+        width: 100%;
+        height: 30%;
+        margin-bottom: 15px;
+    }
+
+    .foto {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+
+    .ctn_textos {
+        width: 100%;
+        height: auto;
+    }
+
+    .textos_message {
+        font-size: 14px;
+        padding-right: 5px;
+        max-height: 120px;
+    }
+
+    hr {
+        width: 100%;
+    }
+
+    .textos_title {
+        font-size: 18px;
+        max-width: 370px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

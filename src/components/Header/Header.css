@@ -1,48 +1,67 @@
 header {
-    background: var(--lilas);
-    padding: 15px 100px;
-    color: var(--branco);
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 140px;
-    background-image: url('../../assets/icons/confete.png');
-    background-repeat: repeat-x;
-    background-size: 15%;
-    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.25);
+  background: var(--lilas);
+  padding: 15px 100px;
+  color: var(--branco);
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 140px;
+  background-image: url('../../assets/icons/confete.png');
+  background-repeat: repeat-x;
+  background-size: 15%;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.25);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.btnLogin {
+  width: 120px;
+  height: 53px;
+  background: var(--roxo);
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--branco);
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.btnLogin:hover {
+  outline: none;
+  background-color: var(--marrom)
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px 20px; /* Diminui só a margem lateral */
+    height: auto; /* Deixa a altura se ajustar sozinha */
+    background-size: 25%; /* Ajusta o fundo confete */
   }
-  
+
   nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 0;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
+    gap: 10px; /* Reduz o espaço entre links */
   }
 
   .btnLogin {
-    width: 120px;
-    height: 53px;
-    background: var(--roxo);
-    border: none;
-    border-radius: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--branco);
-    font-family: 'Roboto Condensed', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    cursor: pointer;
+    width: auto; /* Deixa o botão no tamanho natural */
+    height: 45px; /* Altura um pouco menor */
+    font-size: 14px; /* Fonte um pouco menor */
+    padding: 0 15px; /* Mais confortável para tocar */
   }
-  
-  .btnLogin:hover {
-    outline: none;
-    background-color: var(--marrom)
-  }
+}
