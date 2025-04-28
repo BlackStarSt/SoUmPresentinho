@@ -3,7 +3,7 @@ import '../ProgressBar/ProgressBar.css';
 
 const ProgressBar = ({etapaAtual}) => {
 
-    const etapas = 9;
+    const etapas = 7;
 
     return (
         <div className="progressBar">
