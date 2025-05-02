@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import "../Login/Login.css";
 import compOu from '../../assets/icons/ou.png'
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../db/firebase.js";
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [message, setMessage] = useState('');
+    const [showSenha, setShowSenha] = useState(false);
 
     const navigate = useNavigate();
 
@@ -18,24 +21,26 @@ const Login = () => {
 
         if (!email || !senha) {
             setMessage('Por favor, preencha todos os campos!');
+            setTimeout(() => setMessage(''), 2000);
             return;
         }
-
-        const auth = getAuth();
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, senha);
             const user = userCredential.user;
 
             sessionStorage.setItem('emailUsuario', user.email);
-
             navigate('/profile');
         } catch (error) {
+            console.log("Erro Firebase:", error);
             if (error.code === "auth/user-not-found") {
+                setTimeout(() => setMessage(''), 2000);
                 setMessage("Usuário não encontrado.");
             } else if (error.code === "auth/wrong-password" || error.code === "auth/invalid-credential") {
+                setTimeout(() => setMessage(''), 2000);
                 setMessage("Email ou Senha incorreta.");
             } else {
+                setTimeout(() => setMessage(''), 2000);
                 setMessage("Erro ao tentar realizar login.");
             }
         }
@@ -59,11 +64,17 @@ const Login = () => {
                     <div className="input_ctn">
                         <label>Senha</label>
                         <input
-                            type="password"
+                            type={showSenha ? "text" : "password"}
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
-                            required>
-                        </input>
+                            required
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowSenha(!showSenha)}
+                            className="show-senha-btn">
+                            {showSenha ? <FaEyeSlash /> : <FaEye />}
+                        </button>
                     </div>
                 </form>
                 <div className="ctn_btns">
