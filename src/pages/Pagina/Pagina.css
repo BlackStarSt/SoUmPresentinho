@@ -61,3 +61,88 @@ body {
     border-radius: 15px;
     justify-content: space-evenly;
 }
+
+@media (max-width: 768px) {
+    .container_pagina {
+        width: 95%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .container_pagina > .ctn_fotos {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .container_pagina > .ctn_fotos > .foto {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+    }
+
+    .container_pagina > .ctn_textos {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .container_pagina > .ctn_textos > .textos_title {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .container_pagina > .ctn_textos > .textos_message {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .container_exp {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .pagina-expirada {
+        margin: 0;
+    }
+
+    .container_exp > h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container_pagina {
+        padding: 10px;
+    }
+
+    .container_pagina > .ctn_fotos {
+        width: 100%;
+        height: auto;
+    }
+
+    .container_pagina > .ctn_fotos > .foto {
+        width: 100%;
+        height: auto;
+    }
+
+    .container_pagina > .ctn_textos > .textos_title {
+        font-size: 20px;
+    }
+
+    .container_pagina > .ctn_textos > .textos_message {
+        font-size: 16px;
+    }
+
+    .container_exp {
+        width: 95%;
+        height: auto;
+    }
+
+    .container_exp > h2 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+}

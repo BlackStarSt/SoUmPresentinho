@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import '../Pagina/Pagina.css'
+
 const PaginaExpirada = () => {
     return (
         <div className="pagina-expirada">

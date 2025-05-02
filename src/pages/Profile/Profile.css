@@ -149,4 +149,16 @@
     .ctn_boxs {
         width: 360px;
     }
+
+    .profile_title {
+        margin: 5px 0;
+    }
+
+    .profile_data, .profile_pages{
+        width: 100%;
+    }
+
+    .profile_pages > h3 {
+        margin: 0;
+    }
 }

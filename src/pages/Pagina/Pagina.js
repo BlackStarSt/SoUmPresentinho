@@ -46,13 +46,13 @@ const Pagina = () => {
                     }
 
                     if (expirationTime && new Date() > expirationTime) {
-                        navigate('/pagina-expirada');
+                        navigate('/indisponivel');
                     } else {
                         setData(pageData);
                     }
                 } else {
                     console.log("Página não encontrada");
-                    navigate('/pagina-nao-encontrada');
+                    navigate('/indisponivel');
                 }
             } catch (error) {
                 console.error("Erro ao buscar dados da página:", error);
