@@ -115,10 +115,16 @@ const Profile = () => {
                 <div className="profile">
                     <img src={user} alt="Perfil" className="profile_img" />
                     <div className="profile_data">
-                        <h2 className="profile_title">Dados</h2>
+                        <h2 className="profile_title">Meus dados</h2>
                         <div className="profile_texts">
-                            <p className="profile_name">Nome: {userData.nome} {userData.sobrenome}</p>
-                            <p className="profile_email">Email: {userData.email}</p>
+                            <div className="label_text">
+                                <label htmlFor="">Nome: </label>
+                                <input type="text" value={userData.nome + ' ' + userData.sobrenome} readOnly/>
+                            </div>
+                            <div className="label_text">
+                                <label htmlFor="">Email: </label>
+                                <input type="text" value={userData.email} readOnly/>
+                            </div>
                         </div>
                         <div className="profile_pages">
                             <h3>Páginas do usuário:</h3>

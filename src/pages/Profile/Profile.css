@@ -8,30 +8,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 80%;
+}
+
+.profile_data {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .profile_img {
-    height: 120px;
-    width: 120px;
-    border: 3px dashed var(--branco);
+    height: 70px;
+    width: 70px;
     padding: 15px;
 }
 
 .profile_title {
     text-align: center;
-    font-size: 32px;
-    border-bottom: 3px solid var(--branco);
-    padding: 10px 0;
+    font-size: 36px;
+    padding: 5px 0;
+    color: var(--roxo);
 }
 
 .profile_texts {
-    height: 80px;
-    border-bottom: 3px solid var(--branco);
-    margin-bottom: 15px;
+    height: 120px;
+    padding-bottom: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid var(--roxo);
+}
+
+.label_text {
+    height: 52px;
+    display: flex;
+    flex-direction: column;
 }
 
 .profile_texts>p {
@@ -40,11 +53,11 @@
 
 .profile_pages {
     width: 520px;
-    height: 200px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .btn_pgs {
@@ -78,22 +91,23 @@
     justify-content: space-evenly;
     border: 3px dashed var(--roxo);
     background-color: var(--lilas-claro);
-    color: var(--branco);
+    color: var(--preto);
     cursor: pointer;
     border-radius: 15px;
 }
 
 .box_page:hover {
     border: 3px dashed var(--branco);
-    background-color: var(--marrom);
+    background-color: var(--lilas);
 }
 
-.box_page > p {
+.box_page>p {
     font-size: 16px;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--branco);
 }
 
 .profile_btns {
@@ -111,6 +125,7 @@
     background-color: var(--roxo);
     color: var(--branco);
     border-radius: 10px;
+    font-weight: bold;
 }
 
 .p_btn:nth-child(2):hover {

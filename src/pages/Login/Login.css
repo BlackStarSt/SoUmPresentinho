@@ -35,6 +35,25 @@
     height: 52px;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.senha_ctn {
+    position: relative;
+}
+
+.show-senha-btn {
+    position: absolute;
+    right: 5px;
+    top: 70%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--roxo); 
+    font-size: 20px;
+    outline: none;
+    box-shadow: none;
 }
 
 label {
