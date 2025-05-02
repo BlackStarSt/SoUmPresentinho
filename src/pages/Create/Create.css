@@ -31,21 +31,23 @@
 .ctn_inputCreate {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .mensagem {
     border: 1px solid var(--roxo);
-    height: 160px;
+    height: 100px;
     resize: none;
     border-radius: 15px;
     padding: 10px;
     font-size: 16px;
     font-style: italic;
     margin-top: 5px;
+    position: relative;
 }
 
 .ctn_inputCreate>label {
-    color: var(--rosa);
+    color: var(--vermelho);
 }
 
 .ctn_inputCreate>input {
@@ -69,7 +71,6 @@
     justify-content: center;
     cursor: pointer;
     background-color: var(--branco);
-    /* ou qualquer cor desejada */
     color: var(--preto);
     text-align: center;
 }
@@ -206,9 +207,23 @@
     height: 25px;
     border: 3px dashed var(--branco);
     border-radius: 15px;
-    margin-left: 80px;
-    margin-top: 30px;
+    position: absolute;
+    top: 75px;
+    left: 80px;
     padding: 5px;
+}
+
+.url_erro-msg {
+    top: 135px;
+}
+
+.url_erro-title {
+    top: 60px;
+}
+
+.url_erro-plano {
+    top: 300px;
+    left: 700px;
 }
 
 .sucesso_content {

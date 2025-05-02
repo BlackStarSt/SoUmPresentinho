@@ -20,6 +20,7 @@ import Sucesso from "../../components/Etapas/Sucesso";
 
 const Create = () => {
     const [etapaAtual, setEtapaAtual] = useState(0);
+    
     const [formData, setFormData] = useState({
         url: "",
         titulo: "",
@@ -29,6 +30,7 @@ const Create = () => {
         plano: ""
     });
 
+    const [urlError, setUrlError] = useState(false);
     const emailUsuario = sessionStorage.getItem("emailUsuario");
     const navigate = useNavigate();
 
@@ -79,19 +81,21 @@ const Create = () => {
         }
 
         if (campoAtual && formData[campoAtual].trim() === '') {
-            setMensagemErro('Por favor, preencha o campo acima!');
-            setTimeout(() => {
-                setMensagemErro('');
-            },3000);
+            setMensagemErro('Campo obrigatório não pode estar vazio.');
+            setTimeout(() => setMensagemErro(''), 2000);
             return;
         }
-    
+
+        if (etapaAtual === 0 && urlError) {
+            setMensagemErro('Este nome de página já está em uso!');
+            setTimeout(() => setMensagemErro(''), 2000);
+            return;
+        }
+
         if (etapaAtual === 5) {
             if (!formData.plano) {
                 setMensagemErro('Você precisa selecionar um plano!');
-                setTimeout(() => {
-                    setMensagemErro('');
-                }, 3000);
+                setTimeout(() => setMensagemErro(''), 2000);
                 return;
             }
             salvarDados();
@@ -109,12 +113,12 @@ const Create = () => {
     };
 
     const etapas = [
-        <Nome formData={formData} setFormData={setFormData} />,
-        <Titulo formData={formData} setFormData={setFormData} />,
-        <Mensagem formData={formData} setFormData={setFormData} />,
+        <Nome formData={formData} setFormData={setFormData} mensagemErro={mensagemErro} setUrlError={setUrlError} urlError={urlError} />,
+        <Titulo formData={formData} setFormData={setFormData} mensagemErro={mensagemErro} />,
+        <Mensagem formData={formData} setFormData={setFormData} mensagemErro={mensagemErro} />,
         <Fotos formData={formData} setFormData={setFormData} />,
         <Musica formData={formData} setFormData={setFormData} />,
-        <Plano formData={formData} setFormData={setFormData} />,
+        <Plano formData={formData} setFormData={setFormData} mensagemErro={mensagemErro} />,
         <Sucesso data={formData} />
     ];
 
@@ -127,12 +131,6 @@ const Create = () => {
                     etapas[etapaAtual]
                 ) : (
                     <Sucesso data={formData} />
-                )}
-
-                {mensagemErro && (
-                    <div className="url_erro">
-                        {mensagemErro}
-                    </div>
                 )}
 
                 {etapaAtual !== etapas.length - 1 && (

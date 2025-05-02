@@ -1,11 +1,11 @@
 import React from "react";
 import '../../pages/Create/Create.css';
 
-const Mensagem = ({ formData, setFormData }) => {
+const Mensagem = ({ formData, setFormData, mensagemErro }) => {
     const handleChange = (e) => {
         setFormData({ ...formData, mensagem: e.target.value });
     };
-    
+
     return (
         <div className="ctn_create">
             <div className="create">
@@ -19,6 +19,9 @@ const Mensagem = ({ formData, setFormData }) => {
                         maxLength={350}
                         required
                     />
+                    {(mensagemErro) && (
+                        <p className="url_erro url_erro-msg">{mensagemErro}</p>
+                    )}
                 </div>
             </div>
         </div>

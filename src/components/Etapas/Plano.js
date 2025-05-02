@@ -9,16 +9,14 @@ const planos = [
     { nome: 'Mensal', preco: 9.90, detalhes: ['Texto dedicado', 'QrCode Exclusivo', 'Máximo de 3 imagens', 'Com música', 'URL personalizada', 'Uma memória'] },
     { nome: 'Anual', preco: 79.90, detalhes: ['Texto dedicado', 'QrCode Exclusivo', 'Máximo de 3 imagens', 'Com música', 'URL personalizada', 'Uma memória'] },
     { nome: 'Vitalício', preco: 199.90, detalhes: ['Texto dedicado', 'QrCode Exclusivo', 'Máximo de 3 imagens', 'Com música', 'URL personalizada', 'Uma memória'] },
-  ];  
+];
 
-const Plano = ({ formData, setFormData, setValor }) => {
+const Plano = ({ formData, setFormData, setValor, mensagemErro }) => {
     const [selectedPlan, setSelectedPlan] = useState(formData.plano || '');
-    const [error, setError] = useState('');
 
     const handleSelectPlan = (planName, price) => {
         setSelectedPlan(planName);
         setFormData({ ...formData, plano: planName });
-        setError('');
     };
 
     return (
@@ -46,8 +44,9 @@ const Plano = ({ formData, setFormData, setValor }) => {
                         </div>
                     ))}
                 </div>
-
-                {error && <div className="error_message">{error}</div>}
+                {(mensagemErro) && (
+                    <p className="url_erro url_erro-plano">{mensagemErro}</p>
+                )}
             </div>
         </div>
     );

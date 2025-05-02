@@ -1,36 +1,37 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../db/firebase";
 
 import '../../pages/Create/Create.css';
 
-const Nome = ({ formData, setFormData }) => {
-    const [urlError, setUrlError] = useState(false);
-
+const Nome = ({ formData, setFormData, mensagemErro, setUrlError, urlError }) => {
     useEffect(() => {
         const checkUrlExists = async (url) => {
+            if (url.trim() === "") {
+                setUrlError(false);
+                return;
+            }
+
             const paginasRef = collection(db, "paginas");
             const q = query(paginasRef, where("url", "==", url));
             const querySnapshot = await getDocs(q);
 
             if (!querySnapshot.empty) {
-                setUrlError(true)
+                setUrlError(true);
             } else {
                 setUrlError(false);
             }
         };
 
-        if (formData.url) {
-            checkUrlExists(formData.url);
-        }
-    }, [formData.url]);
+        checkUrlExists(formData.url);
+    }, [formData.url, setUrlError]);
 
     const handleChange = (e) => {
         const valorFormatado = e.target.value.replace(/\s+/g, '-');
-
         setFormData({ ...formData, url: valorFormatado });
     };
+
+    const erroFinal = mensagemErro || (urlError && "Este nome de página já está em uso!");
 
     return (
         <div className="ctn_create">
@@ -46,9 +47,7 @@ const Nome = ({ formData, setFormData }) => {
                         required
                         maxLength={30}
                     />
-                    {urlError && (
-                        <p className="url_erro">Essa URL já existe!</p>
-                    )}
+                    {(mensagemErro || urlError) && (<p className="url_erro">{erroFinal}</p>)}
                 </div>
             </div>
         </div>

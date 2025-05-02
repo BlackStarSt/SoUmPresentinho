@@ -1,6 +1,6 @@
 import React from "react";
 
-const Titulo = ({ formData, setFormData }) => {
+const Titulo = ({ formData, setFormData, mensagemErro }) => {
     const handleChange = (e) => {
         setFormData({ ...formData, titulo: e.target.value });
     };
@@ -18,6 +18,9 @@ const Titulo = ({ formData, setFormData }) => {
                         maxLength={45}
                         required
                     />
+                    {(mensagemErro) && (
+                        <p className="url_erro url_erro-title">{mensagemErro}</p>
+                    )}
                 </div>
             </div>
         </div>
