@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../db/firebase"; 
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../db/firebase";
 
 import '../RecuperaSenha/RecuperaSenha.css';
 
@@ -10,7 +10,7 @@ const RecuperaSenha = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -23,10 +23,10 @@ const RecuperaSenha = () => {
         }
 
         try {
-            const userRef = doc(db, "usuarios", email);
-            const userDoc = await getDoc(userRef);
+            const q = query(collection(db, "usuarios"), where("email", "==", email));
+            const querySnapshot = await getDocs(q);
 
-            if (!userDoc.exists()) {
+            if (querySnapshot.empty) {
                 setMessage('Este e-mail não está registrado!');
                 setTimeout(() => setMessage(''), 2000);
                 setLoading(false);
@@ -36,12 +36,13 @@ const RecuperaSenha = () => {
             await sendPasswordResetEmail(auth, email);
             setMessage('E-mail de recuperação enviado com sucesso!');
             setTimeout(() => setMessage(''), 2000);
+
         } catch (error) {
             setMessage('Erro ao verificar e-mail: ' + error.message);
             setTimeout(() => setMessage(''), 2000);
-        } finally {
             setLoading(false);
         }
+
     };
 
     return (
